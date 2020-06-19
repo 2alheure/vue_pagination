@@ -74,7 +74,7 @@ nav span {
 
 <template>
   <nav class="relative z-0 inline-flex shadow-sm">
-    <button type="button" class="spec prev" aria-label="Previous">
+    <button type="button" class="spec prev" aria-label="Previous" @click="setPrev">
       <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path
           fill-rule="evenodd"
@@ -95,7 +95,7 @@ nav span {
       <span v-else :key="'span-'+index">...</span>
     </template>
 
-    <button type="button" class="spec next" aria-label="Next">
+    <button type="button" class="spec next" aria-label="Next" @click="setNext">
       <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path
           fill-rule="evenodd"
@@ -143,6 +143,14 @@ export default {
           "...",
           this.maxPage
         ];
+    }
+  },
+  methods: {
+    setPrev() {
+      if (this.page > 1) this.$emit('change', this.page - 1);
+    },
+    setNext() {
+      if (this.page < this.maxPage) this.$emit('change', this.page + 1);
     }
   }
 };
