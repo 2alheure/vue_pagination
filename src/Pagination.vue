@@ -34,7 +34,7 @@ nav.pagination button:hover {
 nav.pagination button:focus {
   z-index: 10;
   outline: 0;
-  box-shadow: 0 0 0 1px var(--textColor);
+  box-shadow: 0 0 0 1px var(--selectedBorderColor);
 }
 
 nav.pagination button.active {
