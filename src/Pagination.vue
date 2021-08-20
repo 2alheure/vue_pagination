@@ -105,8 +105,8 @@ nav.pagination button svg {
         type="button"
         :key="'button-' + index"
         v-if="button != '...'"
-        :class="button == page ? 'active' : null"
-        @click="$emit('change', button)"
+        :class="button == modelValue ? 'active' : null"
+        @click="$emit('update:modelValue', button)"
       >
         {{ button }}
       </button>
@@ -129,11 +129,11 @@ nav.pagination button svg {
 export default {
   name: "pagination",
   model: {
-    event: "change",
-    prop: "page",
+    event: "update:modelValue",
+    prop: "modelValue",
   },
   props: {
-    page: Number,
+    modelValue: Number,
     maxPage: Number,
     textColor: { type: String, default: "#4a5568" },
     backgroundColor: { type: String, default: "#fff" },
@@ -150,8 +150,8 @@ export default {
     buttons() {
       if (this.maxPage <= 7)
         return Array.from(Array(this.maxPage), (_, i) => i + 1);
-      else if (this.page <= 4) return [1, 2, 3, 4, 5, "...", this.maxPage];
-      else if (this.page >= this.maxPage - 3)
+      else if (this.modelValue <= 4) return [1, 2, 3, 4, 5, "...", this.maxPage];
+      else if (this.modelValue >= this.maxPage - 3)
         return [
           1,
           "...",
@@ -165,9 +165,9 @@ export default {
         return [
           1,
           "...",
-          this.page - 1,
-          this.page,
-          this.page + 1,
+          this.modelValue - 1,
+          this.modelValue,
+          this.modelValue + 1,
           "...",
           this.maxPage,
         ];
@@ -189,12 +189,12 @@ export default {
   },
   methods: {
     setPrev() {
-      this.$emit("prev", this.page - 1);
-      if (this.page > 1) this.$emit("change", this.page - 1);
+      this.$emit("prev", this.modelValue - 1);
+      if (this.modelValue > 1) this.$emit("update:modelValue", this.modelValue - 1);
     },
     setNext() {
-      this.$emit("next", this.page + 1);
-      if (this.page < this.maxPage) this.$emit("change", this.page + 1);
+      this.$emit("next", this.modelValue + 1);
+      if (this.modelValue < this.maxPage) this.$emit("update:modelValue", this.modelValue + 1);
     },
   },
 };

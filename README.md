@@ -40,7 +40,7 @@ Call the component with two things:
 ## Props
 | Name                     |  Type  | Default value | Description                                                            |
 | :----------------------- | :----: | :-----------: | ---------------------------------------------------------------------- |
-| page                     | Number |     none      | The prop linked to the `v-model` directive (mandatory).                |
+| modelValue               | Number |     none      | The prop linked to the `v-model` directive (mandatory).                |
 | maxPage                  | Number |     none      | The maximum number of pages (mandatory).                               |
 | textColor                | String |   `#4a5568`   | The color of the buttons' text.                                        |
 | backgroundColor          | String |    `#fff`     | The color of the buttons' background.                                  |
@@ -54,8 +54,8 @@ Call the component with two things:
 | controlsHoverBorderColor | String |   `#cbd5e0`   | The color of the borders for the hovered "Previous" or "Next" buttons. |
 
 ## Events
-| Name   | Value type |          Value           | Description                                   |
-| :----- | :--------: | :----------------------: | --------------------------------------------- |
-| change |   Number   |     The page clicked     | Emitted each time a button is clicked         |
-| prev   |   Number   | The previous page number | Emitted when the "Previous" button is clicked |
-| next   |   Number   |   The next page number   | Emitted when the "Next" button is clicked     |
+| Name              | Value type |          Value           | Description                                   |
+| :---------------- | :--------: | :----------------------: | --------------------------------------------- |
+| update:modelValue |   Number   |     The page clicked     | Emitted each time the page changes            |
+| prev              |   Number   | The previous page number | Emitted when the "Previous" button is clicked |
+| next              |   Number   |   The next page number   | Emitted when the "Next" button is clicked     |
