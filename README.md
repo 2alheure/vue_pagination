@@ -1,5 +1,6 @@
 # Vue.js Pagination
-A simple Vue.js component that helps to print and handle a pagination
+A simple Vue.js component that helps to print and handle a pagination.  
+This component is compatible with Vue 3.
 
 - [Vue.js Pagination](#vuejs-pagination)
   - [Installation](#installation)
